@@ -45,7 +45,7 @@ set fenc=gb2312 "设置文件编码
 
 set sw=2
 set ts=2
-colo jellybeans
+colo ir_black
 
 set gfn=Bitstream_Vera_Sans_Mono:h10:cANSI
 set gfw=幼圆:h10.5:cGB2312
@@ -81,10 +81,18 @@ endif
 
 
 set number
+
+"'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+"HTML.vim 
+"'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+let g:no_html_toolbar = 'yes'
+let g:no_html_menu = 'yes'
 let g:do_xhtml_mappings = 'yes'
 let g:html_tag_case = 'lowercase'
 let g:html_default_charset = 'utf-8'
 let g:html_template = $VIM . '\vimfiles\etc\temp.html'
+
+
 set foldmethod=marker
 set foldmarker=<div,div>
 "折叠相关的快捷键
@@ -181,7 +189,8 @@ nnoremap <leader>3 :set filetype=javascript<cr>
 nnoremap <leader>4 :set filetype=php<cr>
 
 "清除页面中的^M
-nnoremap <leader>ce :%s///g<cr>
+nnoremap <leader>ce :%s/
+//g<cr>
 
 ":%s/^M$//g # 去掉行尾的^M。
 ":%s/^M//g # 去掉所有的^M。
@@ -219,53 +228,8 @@ nmap <silent> <leader>ntm :NERDTreeMirror<cr>
 " <leader>cm 添加块注释
 " }}}
 
-""""""""""""""""""""""""""""""""""""
-" {{{ plugin - taglist.vim 代码导航
-""""""""""""""""""""""""""""""""""""
-" 不同时显示多个文件的tag，只显示当前文件的
-let Tlist_Show_One_File = 1
-" 如果taglist窗口是最后一个窗口，则退出vim
-let Tlist_Exit_OnlyWindow = 1
-" 在右侧窗口中显示taglist窗口
-let Tlist_Use_Right_Window = 1
-"taglist更好的支持javascript
-let g:tlist_javascript_settings = 'javascript;s:string;a:array;o:object;f:function;m:member'
-au BufRead,BufNewFile *.scss set ft=scss.css
-map <F12> <Esc>:TlistToggle<CR>
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" {{{ plugin - NeoComplCache.vim 自动提示插件
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"禁用自动完成
-let g:NeoComplCache_Disable_Auto_complete = 1
-"启用自动代码提示
-map <Leader>en :NeoComplCacheEnable<CR>
-"禁用自动代码提示
-map <Leader>dis :NeoComplCacheDisable<CR>
-
-" Define dictionary.
-let g:neocomplcache_dictionary_filetype_lists = {
-    \ 'default' : '',
-    \ 'css' : $VIMFILES.'/dict/css.dict',
-    \ 'php' : $VIMFILES.'/dict/php.dict',
-    \ 'javascript' : $VIMFILES.'/dict/javascript.dict'
-    \ }
-let g:neocomplcache_snippets_dir=$VIMFILES."/snippets"
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<TAB>"
-
 """"""""""""""""""""""""""""""""""""""
 "CSexplorer.vim 配色预览插件
 """"""""""""""""""""""""""""""""""""""
 nmap <silent> <leader>color :ColorSchemeExplorer<cr>
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"Project 的测试和初始化
-"1 打开vim后敲入命令 :Project，可以看到project的列表，不过因为没有初始化暂时是空的
-"2 输入\C (shift+c)，会出现下面这些信息
-"Enter the Name of the Entry: ProjectSrouce （项目名称）
-"Enter the Absolute Directory to Load: /home/Project/src （项目根目录）
-"Enter the CD parameter: . （“.”为当前目录）或者和项目根目录一致
-"Enter the File Filter:  (符合条件的源文件)
-nmap <silent> <leader>pj :Project<cr>
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
