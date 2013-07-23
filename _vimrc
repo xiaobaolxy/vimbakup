@@ -48,9 +48,11 @@ set ts=2
 colo ir_black
 
 set gfn=Bitstream_Vera_Sans_Mono:h10:cANSI
-set gfw=幼圆:h10.5:cGB2312
+set gfw=幼圆:h12:cGB2312
 "set gfn=Consolas:h12
 set linespace=4
+
+set guifont=Courier_New:h12
 
 "Toggle Menu and Toolbar  <F2>切换显示
 set guioptions-=m  
@@ -189,8 +191,7 @@ nnoremap <leader>3 :set filetype=javascript<cr>
 nnoremap <leader>4 :set filetype=php<cr>
 
 "清除页面中的^M
-nnoremap <leader>ce :%s/
-//g<cr>
+nnoremap <leader>ce :%s///g<cr>
 
 ":%s/^M$//g # 去掉行尾的^M。
 ":%s/^M//g # 去掉所有的^M。
